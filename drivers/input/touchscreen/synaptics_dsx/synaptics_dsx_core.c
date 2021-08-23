@@ -4955,3 +4955,4 @@ module_exit(synaptics_rmi4_exit);
 MODULE_AUTHOR("Synaptics, Inc.");
 MODULE_DESCRIPTION("Synaptics DSX Touch Driver");
 MODULE_LICENSE("GPL v2");
+

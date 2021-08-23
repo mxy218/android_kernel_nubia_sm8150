@@ -3660,6 +3660,7 @@ static struct file *path_openat(struct nameidata *nd,
 	if (IS_ERR(file))
 		return file;
 
+//	trace_printk("filp_close debug opened file %p\n", file);
 	file->f_flags = op->open_flag;
 
 	if (unlikely(file->f_flags & __O_TMPFILE)) {

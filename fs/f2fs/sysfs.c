@@ -381,6 +381,10 @@ out:
 			f2fs_reset_iostat(sbi);
 		return count;
 	}
+    #ifdef CONFIG_NUBIA_F2FS_TRIM_STAT
+    if (!strcmp(a->attr.name, "trim_stat"))
+		f2fs_msg(sbi->sb, KERN_WARNING, "want to set trim_stat.");
+    #endif
 
 	if (!strcmp(a->attr.name, "iostat_period_ms")) {
 		if (t < MIN_IOSTAT_PERIOD_MS || t > MAX_IOSTAT_PERIOD_MS)
@@ -553,6 +557,10 @@ F2FS_RW_ATTR(F2FS_SBI, f2fs_sb_info, iostat_period_ms, iostat_period_ms);
 F2FS_RW_ATTR(F2FS_SBI, f2fs_sb_info, readdir_ra, readdir_ra);
 F2FS_RW_ATTR(F2FS_SBI, f2fs_sb_info, gc_pin_file_thresh, gc_pin_file_threshold);
 F2FS_RW_ATTR(F2FS_SBI, f2fs_super_block, extension_list, extension_list);
+#ifdef CONFIG_NUBIA_F2FS_TRIM_STAT
+F2FS_RW_ATTR(F2FS_SBI, f2fs_sb_info, trim_stat, trim_stat);
+#endif
+
 #ifdef CONFIG_F2FS_FAULT_INJECTION
 F2FS_RW_ATTR(FAULT_INFO_RATE, f2fs_fault_info, inject_rate, inject_rate);
 F2FS_RW_ATTR(FAULT_INFO_TYPE, f2fs_fault_info, inject_type, inject_type);
@@ -660,6 +668,10 @@ static struct attribute *f2fs_attrs[] = {
 	ATTR_LIST(moved_blocks_background),
 	ATTR_LIST(avg_vblocks),
 #endif
+#ifdef CONFIG_NUBIA_F2FS_TRIM_STAT
+    ATTR_LIST(trim_stat),
+#endif
+
 	NULL,
 };
 
