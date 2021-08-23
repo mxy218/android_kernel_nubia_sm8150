@@ -1,0 +1,13 @@
+config TOUCHSCREEN_NUBIA_BACK_GOODIX
+        tristate "NUBIA GOODIX BACK DEVICE"
+        default n
+if TOUCHSCREEN_NUBIA_BACK_GOODIX
+source "drivers/nubia/touch/goodix_gtx8_back/Kconfig"
+endif
+
+config TOUCHSCREEN_NUBIA_FRONT_GOODIX
+        tristate "NUBIA GOODIX FRONT DEVICE"
+        default n
+if TOUCHSCREEN_NUBIA_FRONT_GOODIX
+source "drivers/nubia/touch/goodix_gtx8_front/Kconfig"
+endif
