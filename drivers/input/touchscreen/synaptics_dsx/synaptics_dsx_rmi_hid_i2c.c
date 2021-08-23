@@ -3,7 +3,6 @@
  *
  * Copyright (C) 2012-2016 Synaptics Incorporated. All rights reserved.
  *
- * Copyright (c) 2018 The Linux Foundation. All rights reserved.
  * Copyright (C) 2012 Alexandra Chin <alexandra.chin@tw.synaptics.com>
  * Copyright (C) 2012 Scott Lin <scott.lin@tw.synaptics.com>
  *
@@ -43,7 +42,7 @@
 #include <linux/types.h>
 #include <linux/of_gpio.h>
 #include <linux/platform_device.h>
-#include <linux/input/synaptics_dsx.h>
+#include "synaptics_dsx.h"
 #include "synaptics_dsx_core.h"
 
 #define SYN_I2C_RETRY_TIMES 10
