@@ -2806,13 +2806,6 @@ retry:
 
 	if (ret)
 		goto end;
-	}
-
-#ifdef CONFIG_NUBIA_SWITCH_LCD
-	crtc_state->active = active;
-#else
-	crtc_state->active = true;
-#endif
 
 	drm_atomic_commit(state);
 end:

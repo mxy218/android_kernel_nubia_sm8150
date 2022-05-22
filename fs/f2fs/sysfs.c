@@ -381,10 +381,6 @@ out:
 			f2fs_reset_iostat(sbi);
 		return count;
 	}
-    #ifdef CONFIG_NUBIA_F2FS_TRIM_STAT
-    if (!strcmp(a->attr.name, "trim_stat"))
-		f2fs_msg(sbi->sb, KERN_WARNING, "want to set trim_stat.");
-    #endif
 
 	if (!strcmp(a->attr.name, "iostat_period_ms")) {
 		if (t < MIN_IOSTAT_PERIOD_MS || t > MAX_IOSTAT_PERIOD_MS)

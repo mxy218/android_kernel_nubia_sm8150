@@ -1600,6 +1600,9 @@ struct f2fs_sb_info {
 
 	struct kmem_cache *inline_xattr_slab;	/* inline xattr entry */
 	unsigned int inline_xattr_slab_size;	/* default inline xattr slab size */
+#ifdef CONFIG_NUBIA_F2FS_TRIM_STAT
+    int trim_stat;        /*use for f2fs trim stats,no trimed,triming,trimed */
+#endif
 };
 
 struct f2fs_private_dio {
@@ -1607,9 +1610,6 @@ struct f2fs_private_dio {
 	void *orig_private;
 	bio_end_io_t *orig_end_io;
 	bool write;
-#ifdef CONFIG_NUBIA_F2FS_TRIM_STAT
-    int trim_stat;        /*use for f2fs trim stats,no trimed,triming,trimed */
-#endif
 };
 
 #ifdef CONFIG_F2FS_FAULT_INJECTION

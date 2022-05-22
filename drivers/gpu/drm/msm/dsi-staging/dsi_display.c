@@ -5542,15 +5542,11 @@ int dsi_display_dev_probe(struct platform_device *pdev)
 			continue;
 		}
 
-		disp_type = of_get_property(np, "qcom,display-type", NULL);
-		if (!disp_type) {
+		dsi_type = of_get_property(np, "qcom,display-type", NULL);
+		if (!dsi_type) {
 			pr_err("display type not defined for %s\n", name);
 			continue;
 		}
-
-		/* primary/secondary display should match with current dsi */
-		if (strcmp(dsi_type, disp_type))
-			continue;
 		
 		if (boot_disp->boot_disp_en) {
 			if (!strcmp(boot_disp->name, name)) {

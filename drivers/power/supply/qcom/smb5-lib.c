@@ -774,13 +774,6 @@ static int smblib_usb_pd_adapter_allowance_override(struct smb_charger *chg,
 					u8 allowed_voltage)
 {
 	int rc = 0;
-	
-	#if defined(CONFIG_NUBIA_CHARGE_FEATURE)
-	if(chg->real_charger_type != POWER_SUPPLY_TYPE_USB_PD)
-		allowed_voltage = USBIN_ADAPTER_ALLOW_5V_TO_12V;
-		//dump_stack();
-	//pr_err("HDL:allowed_voltage=%d,real_charger_type is %d\n", allowed_voltage,chg->real_charger_type);
-	#endif
 
 	if (chg->chg_param.smb_version == PMI632_SUBTYPE)
 		return 0;
@@ -5536,7 +5529,6 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 		dual_role_instance_changed(chg->dual_role);
 	smblib_dbg(chg, PR_INTERRUPT, "IRQ: usbin-plugin %s\n",
 					vbus_rising ? "attached" : "detached");
-#endif
 }
 
 irqreturn_t usb_plugin_irq_handler(int irq, void *data)

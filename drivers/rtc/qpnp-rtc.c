@@ -676,10 +676,6 @@ static int print_resume_time(struct device *dev)
 
 	return 0;
 }
-static const struct dev_pm_ops qpnp_rtc_pm_ops = {
-	.suspend = print_suspend_time,
-	.resume = print_resume_time,
-};
 #endif
 //End [0016004715 add the kernel power code,20180316]
 static int qpnp_rtc_remove(struct platform_device *pdev)
@@ -785,6 +781,8 @@ static const struct dev_pm_ops qpnp_rtc_pm_ops = {
 	.freeze = qpnp_rtc_freeze,
 	.restore = qpnp_rtc_restore,
 	.thaw = qpnp_rtc_restore,
+	.suspend = print_suspend_time,
+	.resume = print_resume_time,
 };
 
 static const struct of_device_id spmi_match_table[] = {
