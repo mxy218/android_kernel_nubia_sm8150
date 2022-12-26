@@ -15,7 +15,8 @@
 
 #include "sm8150-pmic-overlay.dtsi"
 #include "sm8150-sde-display.dtsi"
-#include "sm8150-camera-sensor-mtp.dtsi"
+#include NUBIA_CAMERA_OVERWRITE_DTSI_FILE
+/* ZTEMT:fengxun modify for camera dtsi --- End*/
 #include "sm8150-thermal-overlay.dtsi"
 
 &qupv3_se4_i2c {
@@ -76,6 +77,26 @@
 	status = "ok";
 };
 
+&qupv3_se7_i2c {
+	status = "ok";
+
+	tfa98xx@34 {
+        status = "ok";
+        compatible = "nxp,tfa98xx";
+        reg =<0x34>;
+        reset-gpio = <&tlmm 100 0x00>;
+        irq-gpio = <&tlmm 96 0x00>;
+    };
+
+    tfa98xx@35 {
+	    status = "ok";
+	    compatible = "nxp,tfa98xx";
+	    reg =<0x35>;
+	    reset-gpio = <&tlmm 94 0x00>;
+	    irq-gpio = <&tlmm 95 0x00>;
+    };
+};
+
 &soc {
 	gpio_keys {
 		compatible = "gpio-keys";
@@ -99,7 +120,7 @@
 		compatible = "qcom,qbt1000";
 		clock-names = "core", "iface";
 		clock-frequency = <25000000>;
-		qcom,ipc-gpio = <&tlmm 118 0>;
+		//qcom,ipc-gpio = <&tlmm 118 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&key_home_default>;
 		qcom,finger-detect-gpio = <&pm8150_gpios 1 0>;
