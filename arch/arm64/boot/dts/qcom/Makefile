@@ -586,9 +586,8 @@ endif
 
 endif
 
-ifeq ($(CONFIG_ARM64aaa),y)
-#always		:= $(dtb-y)
-always          := $(NUBIA_DTS_NAME)
+ifeq ($(CONFIG_ARM64),y)
+always		:= $(dtb-y)
 subdir-y	:= $(dts-dirs)
 else
 targets += dtbs
